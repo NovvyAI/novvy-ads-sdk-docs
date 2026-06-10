@@ -30,7 +30,7 @@ The SDK is published on Maven Central. Add the dependency in your app's `build.g
 
 ```kotlin
 dependencies {
-    implementation("ai.novvy.android:sdk:1.0.0-beta20")
+    implementation("ai.novvy.android:sdk:1.0.0-beta21")
 }
 ```
 

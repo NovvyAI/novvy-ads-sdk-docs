@@ -31,7 +31,7 @@ iOS SDK for programmatic ad delivery, supporting interstitial, rewarded, banner,
 Add the following to your `Podfile`:
 
 ```ruby
-pod 'NovvyAds', :podspec => 'https://raw.githubusercontent.com/NovvyAI/novvy-ads-cocoapods/v1.0.0-beta.12/NovvyAds.podspec'
+pod 'NovvyAds', :podspec => 'https://raw.githubusercontent.com/NovvyAI/novvy-ads-cocoapods/v1.0.0-beta.13/NovvyAds.podspec'
 ```
 
 Then run:
@@ -40,15 +40,15 @@ Then run:
 pod install
 ```
 
-To upgrade, replace `v1.0.0-beta.12` in both URLs with the new version tag.
+To upgrade, replace `v1.0.0-beta.13` in both URLs with the new version tag.
 
 ### With AdMob Mediation
 
 Add both pods to your `Podfile`:
 
 ```ruby
-pod 'NovvyAds', :podspec => 'https://raw.githubusercontent.com/NovvyAI/novvy-ads-cocoapods/v1.0.0-beta.12/NovvyAds.podspec'
-pod 'NovvyAdsAdMob', :podspec => 'https://raw.githubusercontent.com/NovvyAI/novvy-ads-cocoapods/v1.0.0-beta.12/NovvyAdsAdMob.podspec'
+pod 'NovvyAds', :podspec => 'https://raw.githubusercontent.com/NovvyAI/novvy-ads-cocoapods/v1.0.0-beta.13/NovvyAds.podspec'
+pod 'NovvyAdsAdMob', :podspec => 'https://raw.githubusercontent.com/NovvyAI/novvy-ads-cocoapods/v1.0.0-beta.13/NovvyAdsAdMob.podspec'
 ```
 
 Then run:

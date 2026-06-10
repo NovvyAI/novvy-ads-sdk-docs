@@ -13,7 +13,7 @@ Integration guide for Feed Ads. For other ad formats see [README.ios.md](README.
 Add the following to your `Podfile`:
 
 ```ruby
-pod 'NovvyAds', :podspec => 'https://raw.githubusercontent.com/NovvyAI/novvy-ads-cocoapods/v1.0.0-beta.12/NovvyAds.podspec'
+pod 'NovvyAds', :podspec => 'https://raw.githubusercontent.com/NovvyAI/novvy-ads-cocoapods/v1.0.0-beta.13/NovvyAds.podspec'
 ```
 
 Then run:
@@ -22,7 +22,7 @@ Then run:
 pod install
 ```
 
-To upgrade, replace `v1.0.0-beta.12` in the URL with the new version tag.
+To upgrade, replace `v1.0.0-beta.13` in the URL with the new version tag.
 
 ## Initialization
 
