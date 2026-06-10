@@ -32,4 +32,5 @@ Programmatic ad delivery SDK for Android and iOS, supporting interstitial, rewar
 | Min deployment target | iOS 13.0+ |
 | Xcode | 15+ |
 | Swift | 5.0+ |
-| Pod | `pod 'NovvyAds', :podspec => 'https://raw.githubusercontent.com/NovvyAI/novvy-ads-cocoapods/v1.0.0-beta.12/NovvyAds.podspec'` |
+| Pod (direct) | `pod 'NovvyAds', :podspec => 'https://raw.githubusercontent.com/NovvyAI/novvy-ads-cocoapods/v1.0.0-beta.12/NovvyAds.podspec'` |
+| Pod (AdMob mediation) | `pod 'NovvyAdsAdMob', :podspec => 'https://raw.githubusercontent.com/NovvyAI/novvy-ads-cocoapods/v1.0.0-beta.12/NovvyAdsAdMob.podspec'` |
