@@ -19,10 +19,10 @@ Programmatic ad delivery SDK for Android and iOS, supporting interstitial, rewar
 
 | Item | Value |
 |---|---|
-| SDK version | `1.0.0-beta21` |
+| SDK version | `1.0.0-beta23` |
 | Min SDK | 24 (Android 7.0+) |
 | Language | Kotlin / Java 11+ |
-| Dependency | `implementation("ai.novvy.android:sdk:1.0.0-beta21")` |
+| Dependency | `implementation("ai.novvy.android:sdk:1.0.0-beta23")` |
 
 ## iOS
 
