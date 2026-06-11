@@ -73,7 +73,6 @@ feedAd.delegate = object : NovvyFeedAdListener {
     }
 }
 
-feedAd.bidFloor = 1.50  // Optional: minimum eCPM floor
 feedAd.load()
 ```
 

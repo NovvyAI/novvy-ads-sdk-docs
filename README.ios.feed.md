@@ -73,7 +73,6 @@ extension YourClass: NovvyFeedAdDelegate {
     }
 }
 
-feedAd.bidFloor = 1.50  // Optional: minimum eCPM floor
 feedAd.load()
 ```
 

@@ -155,14 +155,6 @@ rewardedAd.load()
 
 `didEarnReward` fires unconditionally when the user closes the ad — the SDK does not distinguish between "watched to completion" and "dismissed early". Grant the reward whenever this callback is received.
 
-### Bid Floor
-
-All ad formats support an optional minimum eCPM floor. Set it before calling `load()`:
-
-```swift
-rewardedAd.bidFloor = 1.50
-```
-
 ## Banner Ads
 
 Banner ads render natively (no WebView) and automatically bind to the container's lifecycle. The server can return multiple ads per request, each with its own display time windows. The SDK supports:
@@ -204,7 +196,6 @@ extension YourClass: NovvyBannerAdDelegate {
     func bannerAdDidClose(_ ad: NovvyBannerAd)                             { }
 }
 
-bannerAd.bidFloor = 1.50
 bannerAd.load()
 ```
 
@@ -255,7 +246,6 @@ extension YourClass: NovvyFeedAdDelegate {
 When `useDefaultSwipeOverlay = false` the SDK skips its built-in "Swipe to skip" overlay; drive your own UI from `didTickWithRemainingSeconds` instead.
 
 ```swift
-feedAd.bidFloor = 1.50
 feedAd.load()
 ```
 
