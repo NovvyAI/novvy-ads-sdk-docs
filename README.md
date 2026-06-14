@@ -19,18 +19,18 @@ Programmatic ad delivery SDK for Android and iOS, supporting interstitial, rewar
 
 | Item | Value |
 |---|---|
-| SDK version | `1.0.0-beta22` |
+| SDK version | `1.0.0-beta23` |
 | Min SDK | 24 (Android 7.0+) |
 | Language | Kotlin / Java 11+ |
-| Dependency | `implementation("ai.novvy.android:sdk:1.0.0-beta22")` |
+| Dependency | `implementation("ai.novvy.android:sdk:1.0.0-beta23")` |
 
 ## iOS
 
 | Item | Value |
 |---|---|
-| SDK version | `v1.0.0-beta.13` |
+| SDK version | `v1.0.0-beta.14` |
 | Min deployment target | iOS 13.0+ |
 | Xcode | 15+ |
 | Swift | 5.0+ |
-| Pod (direct) | `pod 'NovvyAds', :podspec => 'https://raw.githubusercontent.com/NovvyAI/novvy-ads-cocoapods/v1.0.0-beta.13/NovvyAds.podspec'` |
-| Pod (AdMob mediation) | `pod 'NovvyAdsAdMob', :podspec => 'https://raw.githubusercontent.com/NovvyAI/novvy-ads-cocoapods/v1.0.0-beta.13/NovvyAdsAdMob.podspec'` |
+| Pod (direct) | `pod 'NovvyAds', :podspec => 'https://raw.githubusercontent.com/NovvyAI/novvy-ads-cocoapods/v1.0.0-beta.14/NovvyAds.podspec'` |
+| Pod (AdMob mediation) | `pod 'NovvyAdsAdMob', :podspec => 'https://raw.githubusercontent.com/NovvyAI/novvy-ads-cocoapods/v1.0.0-beta.14/NovvyAdsAdMob.podspec'` |
