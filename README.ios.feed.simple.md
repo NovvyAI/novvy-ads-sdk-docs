@@ -24,7 +24,33 @@ pod install
 
 ---
 
-### 三、初始化 SDK
+### 三、完整一集流程
+
+```
+开始播放
+        ↓
+loadAdOnVideoStart         →  后台预加载（不阻塞）
+        ↓
+播放正片
+        ↓
+用户准备划走               →  displayAdOnVideoScroll
+        ↓
+        ├── 有广告  →  SDK 自动挂载到 container，广告展示
+        │                       ↓
+        │           用户划入广告页  →  ad.setPlaying(true)
+        │                       ↓
+        │           用户划走广告页  →  ad.setPlaying(false)
+        │                       ↓
+        │                   进入下一集
+        │                       ↓
+        │           需要释放资源时  →  ad.destroy()
+        │
+        └── 无广告  →  直接进入下一集
+```
+
+---
+
+### 四、初始化 SDK
 
 ```swift
 // AppDelegate.swift 或任意负责初始化的类
@@ -72,42 +98,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NovvyAdObserver {
 }
 ```
 
-`NovvyAdEvent.failed` 的 `error` 字段类型为 `NovvyError`，可按需进一步 `switch` 匹配：
+`NovvyAdEvent.failed` 的 `error` 字段类型为 [`NovvyError`](ios-references/types.md#novvyerror)。
 
-| 类型 | 含义 |
-|------|------|
-| `.noFill` | 服务端无广告填充，属正常情况 |
-| `.timeout` | 请求超时 |
-| `.noBid` | 竞价无结果 |
-| `.invalidRequest` | 请求参数有误 |
-| `.internalError(String)` | SDK 内部错误，关联值为 `String` 类型的具体原因 |
-| `.noData` | 响应数据为空 |
-| `.encodingFailed` | 数据编解码失败 |
-
-`NovvyUserContext` 字段说明：
-
-| 字段 | 类型 | 说明 |
-|------|------|------|
-| `userId` | `String?` | 用户唯一标识 |
-| `hashedEmail` | `String?` | 邮箱 SHA-256 哈希，可用 `NovvySDK.helperHashEmail()` 生成 |
-| `isPaidUser` | `Bool?` | 是否为付费用户（IAP/IAA） |
-| `age` | `Int?` | 由宿主团队定义的年龄分段编码 |
-| `gender` | `String?` | 性别，`"male"` / `"female"` / `"unknown"` |
-| `dramaWatchHistory` | `[NovvyDramaRecord]?` | 已观看剧集记录列表，用于广告定向 |
-| `maximumAdsInOneDrama` | `Int?` | 单部剧最多展示广告次数，不传则由服务端统一控制 |
-
-`NovvyDramaRecord` 字段说明：
-
-| 字段 | 类型 | 说明 |
-|------|------|------|
-| `dramaTitle` | `String` | 剧集 title |
-| `seriesId` | `String` | 剧集唯一标识 |
-| `lastWatchedEpisode` | `Int` | 上次观看到第几集 |
-| `unlockedEpisode` | `Int` | 已解锁到第几集 |
+[`NovvyUserContext`](ios-references/types.md#novvyusercontext) 与 [`NovvyDramaRecord`](ios-references/types.md#novvydramarecord) 的字段说明详见类型参考。
 
 ---
 
-### 四、片头调用 — `loadAdOnVideoStart`
+### 五、片头调用 — `loadAdOnVideoStart`
 
 每一集**开始播放时**调用，用于异步预加载广告并向服务端传递当前剧集上下文。此调用立即返回，不阻塞播放。
 
@@ -128,7 +125,7 @@ NovvySDK.shared.loadAdOnVideoStart(
 
 ---
 
-### 五、视频流滑动时调用 — `displayAdOnVideoScroll`
+### 六、视频流滑动时调用 — `displayAdOnVideoScroll`
 
 用户准备切换视频时调用，同步返回已就绪的广告对象。
 
@@ -169,29 +166,3 @@ ad?.destroy()
 - 已就绪 → 返回广告对象，SDK 内部自动将广告渲染到 `container`
 - 未就绪 → 返回 nil，宿主直接进入下一集
 - 如无需使用，可调用 `ad.destroy()` 销毁，完全释放资源
-
----
-
-### 六、完整一集流程
-
-```
-开始播放
-        ↓
-loadAdOnVideoStart         →  后台预加载（不阻塞）
-        ↓
-播放正片
-        ↓
-用户准备划走               →  displayAdOnVideoScroll
-        ↓
-        ├── 有广告  →  SDK 自动挂载到 container，广告展示
-        │                       ↓
-        │           用户划入广告页  →  ad.setPlaying(true)
-        │                       ↓
-        │           用户划走广告页  →  ad.setPlaying(false)
-        │                       ↓
-        │                   进入下一集
-        │                       ↓
-        │           需要释放资源时  →  ad.destroy()
-        │
-        └── 无广告  →  直接进入下一集
-```
