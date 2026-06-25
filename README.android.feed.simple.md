@@ -24,7 +24,33 @@ dependencies {
 
 ---
 
-### 三、初始化 SDK
+### 三、完整一集流程
+
+```
+开始播放
+        ↓
+loadAdOnVideoStart         →  后台预加载（不阻塞）
+        ↓
+播放正片
+        ↓
+用户准备划走               →  displayAdOnVideoScroll
+        ↓
+        ├── 有广告  →  SDK 自动挂载到 container，广告展示
+        │                       ↓
+        │           用户划入广告页  →  ad.setPlaying(true)
+        │                       ↓
+        │           用户划走广告页  →  ad.setPlaying(false)
+        │                       ↓
+        │                   进入下一集
+        │                       ↓
+        │           需要释放资源时  →  ad.destroy()
+        │
+        └── 无广告  →  直接进入下一集
+```
+
+---
+
+### 四、初始化 SDK
 
 ```kotlin
 NovvySDK.initialize(
@@ -98,7 +124,7 @@ NovvySDK.initialize(
 
 ---
 
-### 四、片头调用 — `loadAdOnVideoStart`
+### 五、片头调用 — `loadAdOnVideoStart`
 
 每一集**开始播放时**调用，用于异步预加载广告并向服务端传递当前剧集上下文。此调用立即返回，不阻塞播放。
 
@@ -119,7 +145,7 @@ NovvySDK.loadAdOnVideoStart(
 
 ---
 
-### 五、视频流滑动时调用 — `displayAdOnVideoScroll`
+### 六、视频流滑动时调用 — `displayAdOnVideoScroll`
 
 用户准备切换视频时调用，同步返回已就绪的广告对象。
 
@@ -161,29 +187,3 @@ ad?.destroy()
 - 已就绪 → 返回广告对象，SDK 内部自动将广告渲染到 `container`
 - 未就绪 → 返回 null，宿主直接进入下一集
 - 如无需使用，可调用 `ad.destroy()` 销毁，完全释放资源
-
----
-
-### 六、完整一集流程
-
-```
-开始播放
-        ↓
-loadAdOnVideoStart         →  后台预加载（不阻塞）
-        ↓
-播放正片
-        ↓
-用户准备划走               →  displayAdOnVideoScroll
-        ↓
-        ├── 有广告  →  SDK 自动挂载到 container，广告展示
-        │                       ↓
-        │           用户划入广告页  →  ad.setPlaying(true)
-        │                       ↓
-        │           用户划走广告页  →  ad.setPlaying(false)
-        │                       ↓
-        │                   进入下一集
-        │                       ↓
-        │           需要释放资源时  →  ad.destroy()
-        │
-        └── 无广告  →  直接进入下一集
-```
